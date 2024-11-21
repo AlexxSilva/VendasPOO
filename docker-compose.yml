@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: dotnet/dotnetconsole:1.0 # Nome da imagem e tag
+    networks:
+      - app_network
+    ports:
+      - "5000:80" # Caso precise expor uma porta
+    environment:
+      - DOTNET_ENVIRONMENT=Production
+    stdin_open: true
+    tty: true
+
+networks:
+  app_network:
